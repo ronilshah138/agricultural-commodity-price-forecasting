@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+xgboost
+pandas
+sqlalchemy
+pydantic
+scikit-learn
+python-dotenv
+numpy
+pydantic-settings

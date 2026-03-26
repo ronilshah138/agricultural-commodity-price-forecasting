@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00450d;
+  --color-primary-container: #1b5e20;
+  --color-primary-fixed: #acf4a4;
+  --color-primary-fixed-dim: #91d78a;
+
+  --color-secondary: #3c6842;
+  --color-secondary-container: #bdefbe;
+  --color-secondary-fixed: #bdefbe;
+  --color-secondary-fixed-dim: #a2d3a4;
+
+  --color-tertiary: #503600;
+  --color-tertiary-container: #6e4b00;
+  --color-tertiary-fixed: #ffdeac;
+  --color-tertiary-fixed-dim: #ffba38;
+
+  --color-surface: #f8faf8;
+  --color-surface-bright: #f8faf8;
+  --color-surface-dim: #d8dad9;
+  --color-surface-container: #eceeec;
+  --color-surface-container-low: #f2f4f2;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #e6e9e7;
+  --color-surface-container-highest: #e1e3e1;
+  --color-surface-variant: #e1e3e1;
+  --color-surface-tint: #2a6b2c;
+
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #90d689;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #426e47;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #ffb82e;
+  --color-on-surface: #191c1b;
+  --color-on-surface-variant: #41493e;
+
+  --color-outline: #717a6d;
+  --color-outline-variant: #c0c9bb;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+
+  --radius-default: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans selection:bg-primary/20;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-on-surface;
+  }
+
+  /* No-Line Rule: Define boundaries via background color shifts, not borders */
+  .card {
+    @apply bg-surface-container-lowest rounded-xl;
+  }
+
+  .section-bg {
+    @apply bg-surface-container-low;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold transition-all hover:bg-primary-container active:scale-95 shadow-sm;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-container));
+  }
+
+  .btn-tertiary {
+    @apply text-primary font-bold hover:underline underline-offset-4 transition-all;
+  }
+
+  .input-field {
+    @apply bg-surface-container-low px-4 py-2.5 rounded-lg outline-none transition-all placeholder:text-on-surface-variant/50 focus:ring-0 relative;
+    border-left: 0 solid var(--color-primary);
+  }
+
+  .input-field:focus {
+    border-left-width: 4px;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-surface-container-lowest/80 backdrop-blur-md;
+  }
+
+  /* Roboto Mono for data */
+  .data-text {
+    @apply font-mono;
+  }
+}
+
+/* Custom transitions and animations */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
